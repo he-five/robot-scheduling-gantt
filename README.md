@@ -1,46 +1,112 @@
-# Getting Started with Create React App
+# Robot Scheduling Gantt Chart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive Gantt chart visualization for robot scheduling operations with dedicated stations.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- 🏭 **12 Dedicated Stations** (6 Disk-pack + 6 Spacer-tray)
+- 🤖 **Robot Operation Scheduling** with conflict-free operations
+- 📊 **Interactive Gantt Chart** with zoom controls
+- 🎨 **Color-coded Operations** (Load/Process/Unload)
+- 📈 **Performance Statistics** and idle time analysis
+- 📱 **Responsive Design** for desktop and mobile
 
-### `npm start`
+## Technology Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **React 18** with TypeScript
+- **Tailwind CSS** for styling
+- **Lucide React** for icons
+- **Create React App** for build tooling
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js 18.x or 20.x LTS
+- npm or yarn
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd robot-scheduling-gantt
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Install dependencies
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Start development server
+npm start
+```
 
-### `npm run eject`
+### Building for Production
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+# Create production build
+npm run build
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Files will be in the 'build' directory
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Deployment
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Vercel (Recommended)
+```bash
+npm install -g vercel
+vercel
+```
 
-## Learn More
+### Netlify
+```bash
+npm run build
+# Upload 'build' folder to netlify.com
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### GitHub Pages
+```bash
+npm install --save-dev gh-pages
+npm run deploy
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Configuration
+
+The system parameters can be modified in `src/RobotScheduler.tsx`:
+
+```typescript
+const stations = {
+  diskPack: {
+    count: 6,           // Number of stations
+    waitTime: 250,      // Processing time (seconds)
+    loadTime: 12,       // Robot load time (seconds)
+    unloadTime: 12,     // Robot unload time (seconds)
+  },
+  spacerTray: {
+    count: 6,           // Number of stations
+    waitTime: 125,      // Processing time (seconds)
+    loadTime: 12,       // Robot load time (seconds)
+    unloadTime: 12,     // Robot unload time (seconds)
+  }
+};
+```
+
+## Features Breakdown
+
+### Station Operations
+- **Dedicated Stations**: Each station type processes only its specific part type
+- **Parallel Processing**: Multiple stations can process simultaneously
+- **Conflict-Free**: No overlapping operations on the same station
+
+### Robot Scheduling
+- **Single Robot**: Handles all load/unload operations sequentially
+- **Priority-Based**: Unloads completed stations before new loads
+- **Optimized**: Minimizes station wait times
+
+### Visual Features
+- **Zoom Controls**: Adjust time scale for detailed analysis
+- **Color Coding**: Different colors for load/unload/process operations
+- **Interactive**: Hover tooltips with operation details
+- **Responsive**: Works on desktop and mobile devices
+
+## License
+
+MIT License - feel free to use and modify as needed.
